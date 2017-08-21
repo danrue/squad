@@ -18,6 +18,7 @@ class Notification(object):
     def __init__(self, status):
         self.status = status
         self.build = status.build
+        self.group = status.group.slug
         previous = status.get_previous()
         self.previous_build = previous and previous.build or None
 
@@ -82,8 +83,11 @@ class Notification(object):
             'settings': settings,
         }
 
+        txt_template = 'squad/notification/diff.txt'
+        if self.group == 'lkft':
+            txt_template = 'squad/notification/diff-lkft.txt'
         text_message = render_to_string(
-            'squad/notification/diff.txt',
+            txt_template,
             context=context,
         )
         html_message = ''
