@@ -1,4 +1,7 @@
 {% load squad_notification %}
+Summary
+=======
+
 Git Repo: {{metadata.items['kernel-repo']}}
 Git Branch: {{metadata.items['kernel-branch']}}
 Git Commit: {{metadata.items['kernel-commit']}}
@@ -15,6 +18,11 @@ Regressions{%if previous_build %} (compared to build {{previous_build.version}})
 {% else %}
 (none)
 {% endif %}
+
+Documentation - link to public page on collaborate.linaro.org
+
+Detailed Test Results
+=====================
 
 All changes{%if previous_build %} (compared to build {{previous_build.version}}){% endif %}
 ------------------------------------------------------------------------
