@@ -5,7 +5,8 @@ RUN apt-get update && \
     python3-dateutil \
     python3-django \
     python3-celery \
-    python3-djano-celery \
+    python3-django-celery \
+    python3-jinja2 \
     python3-whitenoise \
     fonts-font-awesome \
     libjs-angularjs \
