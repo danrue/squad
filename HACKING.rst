@@ -1,6 +1,15 @@
 Development-related notes
 =========================
 
+Running a development environment under Docker
+----------------------------------------------
+
+Run::
+
+    ./dev-docker
+
+It should Just Work™.
+
 Checklist for loading a copy of a production database
 -----------------------------------------------------
 

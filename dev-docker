@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -eu
+
+
+basedir="$(readlink -f "$(dirname $0)")"
+tmpdir="$basedir"/tmp
+datadir="$tmpdir"/data
+
+mkdir -p "$datadir"
+chmod 777 "$datadir"
+
+dockerfile="$datadir"/../Dockerfile.dev
+(
+  sed -e '1,/WORKDIR/!d' "$basedir"/Dockerfile
+  echo 'USER www-data'
+) > "$dockerfile"
+
+docker build -t squad/dev -f "$dockerfile" .
+
+exec docker run \
+  --env=XDG_DATA_HOME=/app/tmp/data \
+  --publish=8000:8000 \
+  --volume="$basedir":/app \
+  -it squad/dev bash
